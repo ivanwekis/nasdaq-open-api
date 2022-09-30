@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /user/login:
+    post:
+      operationId: "users.login"
+      tags:
+        - "user"
+      summary: "The login structure of our API"
+      description: "Read the data received, check it and search of the user exists"
+      responses:
+        200:
+          description: "Successful login"
+          schema:
+            type: "array"
+            items:
+              properties:
+                username:
+                  type: "string"
+                password:
+                  type: "string"
+
+  /user/new_user:
+    post:
+      operationId: "users.new_user"
+      tags:
+        - "user"
+      summary: "The creation of a new user is done in this path"
+      description: "Read the data received, and create a new user if it is correct"
+      responses:
+        200:
+          description: "Successful sign up"
+          schema:
+            type: "array"
+            items:
+              properties:
+                username:
+                  type: "string"
+                email:
+                  type: "string"
+                password:
+                  type: "string"
+                rpassword:
+                  type: "string"
+  
+  /querys/{stock}:
+    get:
+      operationId: "querys.info_stock"
+      tags:
+        - "query"
+      summary: "In this path we query the data of a stock given"
+      description: "If the user is logged, returns the Stocks data"
+      responses:
+        200:
+          description: "Data downloaded succesfully"
+          schema:
+            type: "array"
+            items:
+              properties:
+                Date:
+                  type: "string"
+                Close/last:
+                  type: "string"
+                Volume:
+                  type: "string"
+                Open:
+                  type: "string"
+                High:
+                  type: "string"
+                Low:
+                  type: "string"
+  
+  
+  /querys/{stock}/{date}:
+    get:
+      operationId: "querys.info_stock_date"
+      tags:
+        - "query"
+      summary: "In this path we query the data of a stock given by date"
+      description: "If the user is logged, returns the Stocks data of the specific date"
+      responses:
+        200:
+          description: "Data downloaded succesfully"
+          schema:
+            type: "array"
+            items:
+              properties:
+                Date:
+                  type: "string"
+                Close/last:
+                  type: "string"
+                Volume:
+                  type: "string"
+                Open:
+                  type: "string"
+                High:
+                  type: "string"
+                Low:
+                  type: "string"
+                
